@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prometeo Urban - Preguntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .respuesta {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Bienvenido, ¿en que puedo ayudarte el dia de hoy?</h2>
+    <input type="text" id="pregunta" placeholder="Escribe tu pregunta">
+    <button onclick="responder()">Enviar</button>
+    <div class="respuesta" id="respuesta"></div>
+</div>
+
+<script>
+function normalizar(texto) {
+    return texto.toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // elimina tildes
+}
+
+function responder() {
+    const pregunta = normalizar(document.getElementById("pregunta").value.trim());
+    let respuesta = "";
+
+    if (pregunta === "que es prometeo urban") {
+        respuesta = "somos una tienda de ropa urbana en guatemala, enfocada en estilo joven y tendencias modernas. ¡encuentra desde prendas casuales hasta disenos exclusivos!";
+    } else if (pregunta === "donde estan ubicados") {
+        respuesta = "nuestra tienda fisica esta en [direccion]. tambien puedes comprar en linea a traves de [instagram/facebook/sitio web].";
+    } else if (pregunta === "cual es su horario de atencion") {
+        respuesta = "atendemos de [horario] en tienda fisica. para pedidos en linea, estamos activos 24/7 en redes sociales.";
+    } else if (pregunta === "tienen tienda fisica o solo ventas en linea") {
+        respuesta = "¡ambas! visitanos en [direccion] o compra desde casa por [redes sociales/sitio web].";
+    } else if (pregunta === "hacen envios a todo guatemala") {
+        respuesta = "si, enviamos a todo el pais por [empresa de envios]. el costo varia segun la ubicacion.";
+    } else {
+        respuesta = "no tengo esa respuesta, puedes preguntar sobre prometeo urban";
+    }
+
+    document.getElementById("respuesta").innerText = respuesta;
+}
+</script>
+</body>
+</html>
